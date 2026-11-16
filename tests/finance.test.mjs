@@ -1,0 +1,3 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {toKobo,plan} from '../server/finance.mjs';
+test('money converts exactly to integer kobo',()=>{assert.equal(toKobo('0.29'),29);assert.equal(toKobo('1200000.01'),120000001);for(const n of ['-1','0','1.001','1e3','NaN','100000001'])assert.throws(()=>toKobo(n))});
+test('plan handles achieved goals and past deadlines',()=>{const p=plan(50000,120000,'2026-11-26',new Date('2026-11-16'));assert.equal(p.daily,7000);assert.equal(p.weekly,49000);assert.equal(p.progress,50000/120000*100);assert.equal(plan(200,100,'2020-01-01').remaining,0);assert.equal(plan(0,100,'2020-01-01').days,1)});

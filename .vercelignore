@@ -1,0 +1,10 @@
+.env
+.env.*
+!.env.example
+.ennv
+.vault-data/
+.git/
+.codex/
+.agents/
+.impeccable/
+tests/
